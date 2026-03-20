@@ -25,9 +25,3 @@
     will-change: transform;
   }
 }
-
-@layer base {
-  #root {
-    @apply bg-(--pp-black);
-  }
-}

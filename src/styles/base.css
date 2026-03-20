@@ -10,28 +10,37 @@
     }
   }
 
+  /* Scroll lives on #root (not body/html) so scrollbar styling applies reliably. */
+  html {
+    @apply h-dvh overflow-hidden bg-(--pp-black);
+  }
+
   body {
-    @apply overflow-y-auto overflow-x-hidden antialiased bg-(--pp-black) text-(--pp-white);
+    @apply m-0 min-h-dvh overflow-hidden antialiased bg-(--pp-black) text-(--pp-white);
     font-family: "Proxima Nova A", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply h-dvh overflow-y-auto overflow-x-hidden bg-(--pp-black);
     scrollbar-width: thin;
     scrollbar-color: var(--pp-scrollbar-thumb) var(--pp-black);
   }
 
-  body::-webkit-scrollbar {
+  #root::-webkit-scrollbar {
     @apply size-1.5;
   }
 
-  body::-webkit-scrollbar-track {
+  #root::-webkit-scrollbar-track {
     @apply bg-(--pp-black);
   }
 
-  body::-webkit-scrollbar-thumb {
+  #root::-webkit-scrollbar-thumb {
     @apply rounded-full bg-[var(--pp-scrollbar-thumb)];
   }
 
-  body::-webkit-scrollbar-thumb:hover {
+  #root::-webkit-scrollbar-thumb:hover {
     @apply bg-[var(--pp-scrollbar-thumb-hover)];
   }
 
