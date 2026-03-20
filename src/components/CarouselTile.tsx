@@ -5,6 +5,10 @@ import { classNames } from "../lib/classNames";
 import { ResponsiveImage } from "./ResponsiveImage";
 import styles from "./CarouselTile.module.css";
 
+/** Matches height clamps in CarouselTile.module.css (.tile); width = 2/3 × height (aspect-2/3). */
+const TILE_IMAGE_SIZES =
+  "(min-width: 2560px) calc(2/3 * clamp(220px, 28vh, 520px)), (min-width: 1920px) calc(2/3 * clamp(220px, 28vh, 500px)), (max-width: 768px) calc(2/3 * clamp(200px, 24vh, 280px)), calc(2/3 * clamp(220px, 28vh, 300px))";
+
 interface Props {
   item: CarouselItem;
   index: number;
@@ -45,7 +49,7 @@ export const CarouselTile = memo(
           width={400}
           height={600}
           crop
-          sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, (max-width: 1920px) 200px, 330px"
+          sizes={TILE_IMAGE_SIZES}
           loading={isActive ? "eager" : "lazy"}
           className={styles.posterImage}
         />

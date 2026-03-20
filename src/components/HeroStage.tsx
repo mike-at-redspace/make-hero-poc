@@ -24,7 +24,7 @@ export const HeroStage = memo(({ item, direction }: Props) => (
           key={item.id}
           src={buildUrl({ src: item.poster, width: 1365, height: 768 })}
           srcSet={buildSrcset({ src: item.poster, width: 1365, height: 768 })}
-          sizes="100vw"
+          sizes="(min-width: 2560px) 2560px, 100vw"
           alt=""
           aria-hidden="true"
           width={1365}

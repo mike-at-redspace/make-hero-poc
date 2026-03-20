@@ -16,9 +16,9 @@
   }
 
   .inner {
-    @apply pointer-events-auto flex w-[65%] max-w-[800px] flex-col items-start;
+    @apply pointer-events-auto flex max-w-[680px] flex-col items-start gap-[4px];
 
-    @media (max-width: 768px) {
+    @media (max-width: 500px) {
       @apply w-auto max-w-[calc(100vw-2*var(--pp-pad-stage-x))] items-stretch;
     }
   }
@@ -84,7 +84,7 @@
   }
 
   .description {
-    @apply mt-(--pp-mt-desc) line-clamp-3 w-full text-pretty font-normal leading-[1.65] max-[768px]:mt-6 max-[768px]:text-base;
+    @apply my-(--pp-mt-desc) line-clamp-3 w-full text-pretty font-normal;
     font-family: "Proxima Nova A", system-ui, sans-serif;
     font-size: var(--pp-size-body);
     color: color-mix(

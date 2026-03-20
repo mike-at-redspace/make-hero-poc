@@ -25,9 +25,9 @@
   --pp-text-pill-fluid: 0.95vw;
 
   /* Meta Tokens */
-  --pp-text-meta-min: 0.6rem;
-  --pp-text-meta-max: 0.95rem;
-  --pp-text-meta-fluid: 0.7vw;
+  --pp-text-meta-min: 0.95rem;
+  --pp-text-meta-max: 1.1rem;
+  --pp-text-meta-fluid: 1.2vw;
 
   /* Badge */
   --pp-text-badge-min: 0.6rem;

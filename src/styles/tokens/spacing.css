@@ -9,7 +9,7 @@
   /* Padding & Margins (Mobile / Fluid / Desktop) */
   --pp-space-meta-gap-min: 0.35rem;
   --pp-space-meta-gap-max: 0.85rem;
-  --pp-space-meta-gap-fluid: 0.55vw;
+  --pp-space-meta-gap-fluid: 1vw;
 
   --pp-space-stage-x-min: 1.5rem;
   --pp-space-stage-x-max: 8rem;

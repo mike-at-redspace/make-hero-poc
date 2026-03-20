@@ -86,13 +86,13 @@ export const HeroMeta = ({ item, direction }: Props) => {
           className={styles.inner}
         >
           {/* 1 ── Show logo / title fallback */}
-          <Slot>
+          <Slot className="w-full max-w-3xl">
             {showLogo ? (
               <ResponsiveImage
                 src={item.logo!}
                 alt={item.showTitle}
                 width={1200}
-                sizes="(max-width: 768px) 92vw, (max-width: 1230px) 65vw, 800px"
+                sizes="(max-width: 768px) 92vw, (max-width: 1230px) 65vw, 768px"
                 className={styles.logo}
                 onError={() => setLogoError(true)}
               />

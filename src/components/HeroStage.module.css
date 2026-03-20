@@ -2,9 +2,9 @@
 
 @layer components {
   .stage {
-    @apply relative isolate z-20 aspect-video w-full max-h-[768px] bg-(--pp-black);
+    @apply relative isolate z-20 aspect-video w-full max-h-[580px] min-h-[720px] bg-(--pp-black);
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       @apply aspect-3/4 max-h-none;
     }
   }

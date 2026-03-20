@@ -2,7 +2,7 @@
 
 @layer components {
   .trackWrapper {
-    @apply relative z-10 flex w-full shrink-0 grow-0 basis-auto flex-col overflow-hidden min-h-[clamp(220px,28vh,300px)] max-h-[clamp(280px,50vh,520px)];
+    @apply relative z-10 flex w-full shrink-0 grow-0 basis-auto flex-col overflow-x-visible overflow-y-hidden min-h-[clamp(220px,28vh,300px)] max-h-[clamp(280px,50vh,520px)];
 
     @media (max-width: 768px) {
       @apply min-h-[clamp(200px,24vh,280px)] max-h-[clamp(260px,48vh,440px)];
