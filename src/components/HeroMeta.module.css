@@ -18,13 +18,14 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      max-width: min(100%, clamp(760px, 78vw, 1600px));
+      width: 65%;
+      max-width: 800px;
       pointer-events: auto;
 
       @media (max-width: 768px) {
         align-items: stretch;
-        max-width: 100%;
-        width: 100%;
+        width: auto;
+        max-width: calc(100vw - 2 * var(--pp-pad-stage-x));
       }
     }
 
@@ -118,6 +119,7 @@
 
     .description {
       margin-top: var(--pp-mt-desc);
+      width: 100%;
       color: color-mix(
         in srgb,
         var(--pp-white) var(--pp-opacity-primary),

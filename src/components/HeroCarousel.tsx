@@ -58,8 +58,12 @@ export const HeroCarousel = ({ items }: Props) => {
 
   return (
     <div
-      className="w-full h-[100dvh] min-h-[600px] flex flex-col overflow-x-hidden overflow-y-visible"
-      style={{ background: "var(--pp-black)", color: "var(--pp-white)" }}
+      className="w-full h-[100dvh] min-h-[600px] grid overflow-x-hidden overflow-y-visible"
+      style={{
+        background: "var(--pp-black)",
+        color: "var(--pp-white)",
+        gridTemplateRows: "minmax(0, 1fr) auto",
+      }}
       role="region"
       aria-label="Featured Content"
       aria-roledescription="carousel"

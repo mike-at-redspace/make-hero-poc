@@ -1,31 +1,26 @@
 @layer components {
   .trackWrapper {
     flex: 0 0 auto;
-    height: min(clamp(240px, 38vh, 420px), calc(100dvh - 360px));
-    margin-bottom: 1.5rem;
+    height: min(clamp(220px, 32vh, 360px), calc(100dvh - 320px));
+    margin-top: 0;
     width: 100%;
     position: relative;
     z-index: 20;
-    overflow: visible;
+    overflow: hidden;
 
     @media (max-width: 768px) {
-      height: min(clamp(240px, 36vh, 340px), calc(100dvh - 520px));
+      height: min(clamp(220px, 34vh, 320px), calc(100dvh - 480px));
       margin-bottom: 0;
     }
   }
 
   .track {
     display: flex;
-    align-items: flex-end;
+    align-items: top;
     gap: clamp(0.65rem, 1vw, 1.1rem);
     box-sizing: border-box;
     height: 100%;
-    padding:
-      clamp(1rem, 2.4vh, 2rem)
-      var(--pp-pad-stage-x)
-      clamp(0.75rem, 1.8vh, 1.25rem);
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     touch-action: pan-y;
@@ -36,7 +31,7 @@
 
     @media (max-width: 768px) {
       gap: 0.75rem;
-      padding: 1rem var(--pp-pad-stage-x) 1rem;
+      padding: clamp(1rem, 2vh, 1.5rem) var(--pp-pad-stage-x) 1.5rem;
     }
   }
 }
