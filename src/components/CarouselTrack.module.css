@@ -10,7 +10,6 @@
 
     @media (max-width: 768px) {
       height: min(clamp(220px, 34vh, 320px), calc(100dvh - 480px));
-      margin-bottom: 0;
     }
   }
 
@@ -20,6 +19,8 @@
     gap: clamp(0.65rem, 1vw, 1.1rem);
     box-sizing: border-box;
     height: 100%;
+    padding: clamp(1.5rem, 3vh, 2.5rem) var(--pp-pad-stage-x)
+      clamp(1rem, 2vh, 2rem);
     overflow: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;

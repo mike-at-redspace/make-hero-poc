@@ -58,7 +58,7 @@ export const HeroCarousel = ({ items }: Props) => {
 
   return (
     <div
-      className="w-full h-[100dvh] min-h-[600px] grid overflow-x-hidden overflow-y-visible"
+      className="w-full h-dvh min-h-150 grid overflow-x-hidden overflow-y-visible pb-3"
       style={{
         background: "var(--pp-black)",
         color: "var(--pp-white)",

@@ -90,8 +90,8 @@ export const HeroMeta = ({ item, direction }: Props) => {
               <ResponsiveImage
                 src={item.logo!}
                 alt={item.showTitle}
-                width={800}
-                sizes="(max-width: 768px) 80vw, (max-width: 1920px) 65vw, 800px"
+                width={1200}
+                sizes="(max-width: 768px) 92vw, (max-width: 1230px) 65vw, 800px"
                 className={styles.logo}
                 onError={() => setLogoError(true)}
               />
