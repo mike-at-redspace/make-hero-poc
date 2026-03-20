@@ -42,10 +42,10 @@ export const CarouselTile = memo(
         <ResponsiveImage
           src={item.thumb}
           alt=""
-          width={260}
-          height={390}
+          width={280}
+          height={420}
           crop
-          sizes="(max-height: 780px) 22vh, (max-width: 875px) 140px, (max-width: 1625px) 16vw, 260px"
+          sizes="(max-width: 768px) 56vw, (max-width: 1280px) 24vw, 280px"
           loading={isActive ? "eager" : "lazy"}
           className={styles.posterImage}
         />

@@ -91,7 +91,7 @@ export const HeroMeta = ({ item, direction }: Props) => {
                 src={item.logo!}
                 alt={item.showTitle}
                 width={580}
-                sizes="(max-width: 768px) 50vw, (max-width: 2071px) 28vw, 580px"
+                sizes="(max-width: 768px) 100vw, (max-width: 2051px) 78vw, 1600px"
                 className={styles.logo}
                 onError={() => setLogoError(true)}
               />

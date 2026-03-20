@@ -1,11 +1,12 @@
 @layer components {
   .tile {
+    --pp-tile-active-scale: 1.08;
     position: relative;
     flex-shrink: 0;
-    height: calc(100% - 4rem);
+    height: min(calc((100% - 0.5rem) / var(--pp-tile-active-scale)), 300px);
     width: auto;
-    min-height: 180px;
-    max-height: 390px;
+    min-height: 150px;
+    max-height: 300px;
     aspect-ratio: 2 / 3;
     border-radius: 10px;
     border: 2px solid transparent;
@@ -19,11 +20,9 @@
       outline-color 0.2s ease;
 
     @media (max-width: 768px) {
-      width: clamp(124px, 31vw, 172px);
-      height: auto;
+      height: calc((100% - 0.5rem) / var(--pp-tile-active-scale));
       min-height: 0;
       max-height: none;
-      aspect-ratio: 2 / 3;
     }
 
     &:focus-visible {
