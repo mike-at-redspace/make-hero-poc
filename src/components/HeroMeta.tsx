@@ -3,6 +3,7 @@ import { motion, AnimatePresence, type Variants } from "motion/react";
 import type { CarouselItem } from "../types/carousel.types";
 import { CastPills } from "./CastPills";
 import { CtaButton } from "./CtaButton";
+import { ResponsiveImage } from "./ResponsiveImage";
 import styles from "./HeroMeta.module.css";
 
 interface Props {
@@ -86,9 +87,11 @@ export const HeroMeta = ({ item, direction }: Props) => {
           {/* 1 ── Show logo / title fallback */}
           <Slot>
             {showLogo ? (
-              <img
+              <ResponsiveImage
                 src={item.logo!}
                 alt={item.showTitle}
+                width={580}
+                sizes="(max-width: 768px) 50vw, (max-width: 2071px) 28vw, 580px"
                 className={styles.logo}
                 onError={() => setLogoError(true)}
               />

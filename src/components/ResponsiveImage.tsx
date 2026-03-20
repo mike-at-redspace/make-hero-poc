@@ -50,7 +50,9 @@ export function buildSrcset({ src, width, height, crop }: BuildUrlOptions): stri
     const scaledHeight =
       height !== undefined ? Math.round(height * density) : undefined;
 
-    entries.push(`${buildUrl({ src, width: scaledWidth, height: scaledHeight, crop })} ${density}x`);
+    entries.push(
+      `${buildUrl({ src, width: scaledWidth, height: scaledHeight, crop })} ${scaledWidth}w`,
+    );
   }
 
   return entries.join(", ");

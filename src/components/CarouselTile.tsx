@@ -42,12 +42,12 @@ export const CarouselTile = memo(
         <ResponsiveImage
           src={item.thumb}
           alt=""
-          width={600}
-          height={900}
+          width={260}
+          height={390}
           crop
-          sizes="(max-width: 768px) 33vw, 15vw"
+          sizes="(max-width: 875px) 140px, (max-width: 1625px) 16vw, 260px"
           loading={isActive ? "eager" : "lazy"}
-          className={`absolute inset-0 w-full h-full object-cover pointer-events-none ${styles.posterImage}`}
+          className={styles.posterImage}
         />
         {/* Overlay label for low-vision / screen readers */}
         <span className={styles.srLabel}>{item.showTitle}</span>

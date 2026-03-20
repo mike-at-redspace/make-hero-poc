@@ -21,13 +21,13 @@ export const HeroStage = memo(({ item, direction }: Props) => (
       <AnimatePresence mode="popLayout">
         <motion.img
           key={item.id}
-          src={buildUrl({ src: item.poster, width: 1280, height: 720 })}
-          srcSet={buildSrcset({ src: item.poster, width: 1280, height: 720 })}
+          src={buildUrl({ src: item.poster, width: 1365, height: 768 })}
+          srcSet={buildSrcset({ src: item.poster, width: 1365, height: 768 })}
           sizes="100vw"
           alt=""
           aria-hidden="true"
-          width={1280}
-          height={720}
+          width={1365}
+          height={768}
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
