@@ -45,7 +45,7 @@ export const CarouselTile = memo(
           width={260}
           height={390}
           crop
-          sizes="(max-width: 875px) 140px, (max-width: 1625px) 16vw, 260px"
+          sizes="(max-height: 780px) 22vh, (max-width: 875px) 140px, (max-width: 1625px) 16vw, 260px"
           loading={isActive ? "eager" : "lazy"}
           className={styles.posterImage}
         />

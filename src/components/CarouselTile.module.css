@@ -2,8 +2,10 @@
   .tile {
     position: relative;
     flex-shrink: 0;
-    width: clamp(140px, 16vw, 260px);
-    height: auto;
+    height: calc(100% - 4rem);
+    width: auto;
+    min-height: 180px;
+    max-height: 390px;
     aspect-ratio: 2 / 3;
     border-radius: 10px;
     border: 2px solid transparent;
@@ -15,6 +17,14 @@
       border-color 0.3s ease,
       box-shadow 0.3s ease,
       outline-color 0.2s ease;
+
+    @media (max-width: 768px) {
+      width: clamp(124px, 31vw, 172px);
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      aspect-ratio: 2 / 3;
+    }
 
     &:focus-visible {
       outline: 3px solid var(--pp-focus-ring);

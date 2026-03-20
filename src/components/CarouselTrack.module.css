@@ -1,11 +1,16 @@
 @layer components {
   .trackWrapper {
     flex: 0 0 auto;
-    height: calc(clamp(140px, 16vw, 260px) * 1.5 + 4rem);
+    height: clamp(240px, 42vh, calc(260px * 1.5 + 4rem));
     margin-bottom: 1.5rem;
     width: 100%;
     position: relative;
     z-index: 20;
+
+    @media (max-width: 768px) {
+      height: clamp(220px, 33vh, 320px);
+      margin-bottom: 0;
+    }
   }
 
   .track {
@@ -22,6 +27,11 @@
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    @media (max-width: 768px) {
+      gap: 0.5rem;
+      padding: 0.5rem var(--pp-pad-stage-x) 0.75rem;
     }
   }
 }

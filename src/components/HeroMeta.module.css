@@ -28,6 +28,10 @@
       }
     }
 
+    @media (max-width: 768px) {
+      padding-bottom: clamp(0.5rem, 1.5vh, 1rem);
+    }
+
     .logo {
       width: var(--pp-size-logo-w);
       max-width: 100%;
@@ -151,6 +155,7 @@
       margin-top: var(--pp-mt-cta);
 
       @media (max-width: 768px) {
+        margin-top: 0.875rem;
         width: 100%;
       }
     }
