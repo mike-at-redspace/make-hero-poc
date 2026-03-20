@@ -1,16 +1,12 @@
+@reference "tailwindcss";
+
 @layer components {
   .stage {
-    position: relative;
+    @apply relative min-h-0 w-full flex-[1_1_auto] bg-(--pp-black);
     height: 100%;
-    flex: 1 1 auto;
-    min-height: 0;
-    width: 100%;
-    background: var(--pp-black);
 
     .vignette {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+      @apply pointer-events-none absolute inset-0;
       background:
         linear-gradient(
           to right,

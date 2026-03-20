@@ -1,11 +1,11 @@
 import type { CarouselItem } from "../types/carousel.types";
 
 /**
- * Criminal Minds is not in the Originals carousel feed. Remaining rows are merged
- * from Paramount+ carousel pagination (offset 1, 21, 41, 61; limit 20; total 80).
- * Thumbs use w2560-q80 (upgraded from API w370). Poster/logo query strings stripped.
+ * Static carousel feed for the POC. Criminal Minds is not in the Originals carousel feed;
+ * remaining rows are merged from Paramount+ carousel pagination (offset 1, 21, 41, 61;
+ * limit 20; total 80). Thumbs use w2560-q80 (upgraded from API w370). Poster/logo query
+ * strings stripped. Typed as {@link CarouselItem}; `castNames` may be `null` per API rows.
  */
-
 export const CAROUSEL_DATA: CarouselItem[] = [
   {
     id: "criminal-minds",

@@ -6,6 +6,7 @@ interface Props {
   item: CarouselItem;
 }
 
+/** Blurred poster wash behind the hero (decorative; `aria-hidden`). */
 export const AmbientGlow = ({ item }: Props) => (
   <div className={styles.root} aria-hidden="true">
     <AnimatePresence mode="popLayout">

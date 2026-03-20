@@ -1,38 +1,28 @@
+@reference "tailwindcss";
+
 @layer components {
   .trackWrapper {
-    flex: 0 0 auto;
-    height: min(clamp(220px, 32vh, 360px), calc(100dvh - 320px));
-    margin-top: 0;
-    width: 100%;
-    position: relative;
-    z-index: 20;
-    overflow: hidden;
+    @apply relative z-20 mt-0 w-full flex-none overflow-hidden;
+    height: min(clamp(200px, 28vh, 320px), calc(100dvh - 280px));
 
     @media (max-width: 768px) {
-      height: min(clamp(220px, 34vh, 320px), calc(100dvh - 480px));
+      height: min(clamp(200px, 32vh, 300px), calc(100dvh - 420px));
     }
   }
 
   .track {
-    display: flex;
-    align-items: top;
+    @apply box-border flex h-full w-full touch-pan-y items-start overflow-hidden [scrollbar-width:none] [-ms-overflow-style:none];
     gap: clamp(0.65rem, 1vw, 1.1rem);
-    box-sizing: border-box;
-    height: 100%;
-    padding: clamp(1.5rem, 3vh, 2.5rem) var(--pp-pad-stage-x)
-      clamp(1rem, 2vh, 2rem);
-    overflow: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    touch-action: pan-y;
+    padding: clamp(0.75rem, 1.5vh, 1.5rem) var(--pp-pad-stage-x)
+      clamp(0.75rem, 1.5vh, 1.5rem);
 
     &::-webkit-scrollbar {
-      display: none;
+      @apply hidden;
     }
 
     @media (max-width: 768px) {
-      gap: 0.75rem;
-      padding: clamp(1rem, 2vh, 1.5rem) var(--pp-pad-stage-x) 1.5rem;
+      @apply gap-3;
+      padding: clamp(0.75rem, 1.5vh, 1rem) var(--pp-pad-stage-x) 1rem;
     }
   }
 }

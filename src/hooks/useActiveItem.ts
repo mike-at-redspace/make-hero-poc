@@ -6,10 +6,10 @@ import type {
 
 const deriveDirection = (next: number, prev: number) => (next > prev ? 1 : -1);
 
-const reducer = (
+function activeItemReducer(
   state: ActiveItemState,
   action: ActiveItemAction,
-): ActiveItemState => {
+): ActiveItemState {
   switch (action.type) {
     case "SET_INDEX":
       return {
@@ -29,10 +29,20 @@ const reducer = (
     default:
       return state;
   }
+}
+
+export type UseActiveItemResult = ActiveItemState & {
+  setIndex: (index: number, direction?: number) => void;
+  next: (maxIndex: number) => void;
+  prev: () => void;
 };
 
-export const useActiveItem = (initialIndex = 0) => {
-  const [state, dispatch] = useReducer(reducer, {
+/**
+ * Local carousel index with derived slide direction for Framer-style transitions.
+ * `next`/`prev` clamp to `[0, maxIndex]` / `[0, ∞)` respectively.
+ */
+export function useActiveItem(initialIndex = 0): UseActiveItemResult {
+  const [state, dispatch] = useReducer(activeItemReducer, {
     activeIndex: initialIndex,
     direction: 0,
   });
@@ -48,4 +58,4 @@ export const useActiveItem = (initialIndex = 0) => {
   const prev = useCallback(() => dispatch({ type: "PREV" }), []);
 
   return { ...state, setIndex, next, prev };
-};
+}

@@ -1,11 +1,7 @@
-import { memo, useMemo } from "react";
-
-// ─── Constants ───────────────────────────────────────────────────────────────
+import { memo, useMemo, type ImgHTMLAttributes } from "react";
 
 const MAX_WIDTH = 4096;
 const DENSITIES = [1, 2, 3] as const;
-
-// ─── Types ───────────────────────────────────────────────────────────────────
 
 export type ResponsiveImageProps = {
   src: string;
@@ -17,18 +13,28 @@ export type ResponsiveImageProps = {
   className?: string;
   loading?: "lazy" | "eager";
   decoding?: "async" | "sync" | "auto";
-};
+} & Pick<ImgHTMLAttributes<HTMLImageElement>, "onError">;
 
 type BuildUrlOptions = {
-  src: string;
-  width: number;
-  height?: number;
-  crop?: boolean;
+  readonly src: string;
+  readonly width: number;
+  readonly height?: number;
+  readonly crop?: boolean;
 };
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-export function buildUrl({ src, width, height, crop }: BuildUrlOptions): string {
+/**
+ * Builds a Paramount CDN-style URL, appending `width`/`height`/`crop` without dropping existing query params.
+ *
+ * @example
+ * buildUrl({ src: "https://cdn.example.com/a.jpg?format=webp", width: 800 })
+ * // => "https://cdn.example.com/a.jpg?format=webp&width=800"
+ */
+export function buildUrl({
+  src,
+  width,
+  height,
+  crop,
+}: BuildUrlOptions): string {
   const base = src.includes("?") ? src : `${src}?format=webp`;
   const params = new URLSearchParams();
   params.set("width", String(width));
@@ -37,7 +43,19 @@ export function buildUrl({ src, width, height, crop }: BuildUrlOptions): string 
   return `${base}&${params.toString()}`;
 }
 
-export function buildSrcset({ src, width, height, crop }: BuildUrlOptions): string {
+/**
+ * Comma-separated `srcset` entries at 1x–3x logical widths, capped at {@link MAX_WIDTH}.
+ *
+ * @example
+ * buildSrcset({ src: "https://cdn.example.com/a.jpg", width: 400 })
+ * // => "...400w, ...800w, ...1200w"
+ */
+export function buildSrcset({
+  src,
+  width,
+  height,
+  crop,
+}: BuildUrlOptions): string {
   const seen = new Set<number>();
   const entries: string[] = [];
 
@@ -58,8 +76,6 @@ export function buildSrcset({ src, width, height, crop }: BuildUrlOptions): stri
   return entries.join(", ");
 }
 
-// ─── Component ───────────────────────────────────────────────────────────────
-
 export const ResponsiveImage = memo(function ResponsiveImage({
   src,
   alt,
@@ -70,6 +86,7 @@ export const ResponsiveImage = memo(function ResponsiveImage({
   className,
   loading = "lazy",
   decoding = "async",
+  onError,
 }: ResponsiveImageProps) {
   const fallbackSrc = useMemo(
     () => buildUrl({ src, width, height, crop }),
@@ -92,6 +109,7 @@ export const ResponsiveImage = memo(function ResponsiveImage({
       className={className}
       loading={loading}
       decoding={decoding}
+      onError={onError}
     />
   );
 });

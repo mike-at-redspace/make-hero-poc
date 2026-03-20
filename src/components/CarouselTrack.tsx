@@ -1,18 +1,21 @@
 import { forwardRef } from "react";
 import { motion, type MotionValue } from "motion/react";
+import type { CarouselDragBind } from "../hooks/useDragCarousel";
 import styles from "./CarouselTrack.module.css";
 
 interface Props {
   children: React.ReactNode;
   x: MotionValue<number>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  bindDrag: (...args: any[]) => Record<string, unknown>;
+  bindDrag: CarouselDragBind;
   activeIndex: number;
   itemCount: number;
 }
 
+/**
+ * Horizontal `listbox` track: motion offset for drag feedback and `aria-activedescendant` wiring.
+ */
 export const CarouselTrack = forwardRef<HTMLDivElement, Props>(
-  ({ children, x, bindDrag, activeIndex }, ref) => (
+  ({ children, x, bindDrag, activeIndex, itemCount: _itemCount }, ref) => (
     <div className={styles.trackWrapper}>
       <motion.div
         ref={ref}

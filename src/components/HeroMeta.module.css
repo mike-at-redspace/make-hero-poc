@@ -1,12 +1,9 @@
+@reference "tailwindcss";
+
 @layer components {
   .container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    @apply pointer-events-none absolute bottom-0 left-0 z-10 w-full;
     padding: 0 var(--pp-pad-stage-x) 0;
-    z-index: 10;
-    pointer-events: none;
     background: linear-gradient(
       to top,
       var(--pp-black) 0%,
@@ -15,32 +12,21 @@
     );
 
     .inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      @apply flex max-w-[800px] flex-col items-start pointer-events-auto;
       width: 65%;
-      max-width: 800px;
-      pointer-events: auto;
 
       @media (max-width: 768px) {
-        align-items: stretch;
-        width: auto;
-        max-width: calc(100vw - 2 * var(--pp-pad-stage-x));
+        @apply w-auto max-w-[calc(100vw_-_2_*_var(--pp-pad-stage-x))] items-stretch;
       }
     }
 
     @media (max-width: 768px) {
-      padding-bottom: clamp(0.5rem, 1.5vh, 1rem);
+      padding-bottom: clamp(0.25rem, 0.8vh, 0.5rem);
     }
 
     .logo {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
+      @apply mb-[clamp(0.5rem,1.2vh,1.25rem)] block h-auto w-full max-w-full object-contain object-left;
       max-height: clamp(120px, 30vh, 360px);
-      object-fit: contain;
-      object-position: left center;
-      margin-bottom: clamp(0.5rem, 1.2vh, 1.25rem);
       filter: drop-shadow(
           0 2px 8px color-mix(in srgb, var(--pp-black) 85%, transparent)
         )
@@ -48,82 +34,58 @@
           0 6px 28px color-mix(in srgb, var(--pp-black) 65%, transparent)
         );
 
-      display: block;
-
       @media (max-width: 768px) {
         max-height: clamp(110px, 18vh, 180px);
       }
     }
 
     .metaBar {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      @apply flex flex-wrap items-center;
       gap: var(--pp-gap-meta);
 
       .metaToken {
+        @apply whitespace-nowrap uppercase leading-none font-medium tracking-widest;
         font-family: "Proxima Nova A", system-ui, sans-serif;
         font-size: var(--pp-size-meta);
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
         color: color-mix(
           in srgb,
           var(--pp-white) var(--pp-opacity-tertiary),
           transparent
         );
-        white-space: nowrap;
-        line-height: 1;
         text-shadow: 0 1px 6px
           color-mix(in srgb, var(--pp-black) 90%, transparent);
       }
 
       .metaDot {
-        font-size: 0.5em;
-        line-height: 1;
-        user-select: none;
-        flex-shrink: 0;
+        @apply shrink-0 select-none leading-none text-[0.5em];
         color: color-mix(in srgb, var(--pp-white) 35%, transparent);
       }
 
       .brandBadge {
+        @apply whitespace-nowrap rounded-(--pp-radius-pill) py-[0.2em] px-[0.65em] font-bold uppercase leading-[1.6] tracking-[0.08em] text-(--pp-fg);
         background: var(--pp-gradient-brand);
-        border-radius: var(--pp-radius-pill);
-        padding: 0.2em 0.65em;
         font-family: "Proxima Nova A", system-ui, sans-serif;
         font-size: var(--pp-size-badge);
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--pp-fg);
-        white-space: nowrap;
-        line-height: 1.6;
         text-shadow: 0 1px 4px
           color-mix(in srgb, var(--pp-black) 60%, transparent);
       }
 
       .ratingBadge {
-        border: 1.5px solid color-mix(in srgb, var(--pp-white) 28%, transparent);
-        border-radius: var(--pp-radius-soft);
-        padding: 0.12em 0.45em;
+        @apply whitespace-nowrap rounded-(--pp-radius-soft) border-[1.5px] border-solid py-[0.12em] px-[0.45em] font-semibold uppercase leading-none tracking-[0.06em];
+        border-color: color-mix(in srgb, var(--pp-white) 28%, transparent);
         font-family: "Proxima Nova A", system-ui, sans-serif;
         font-size: var(--pp-size-badge);
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
         color: color-mix(
           in srgb,
           var(--pp-white) var(--pp-opacity-tertiary),
           transparent
         );
-        white-space: nowrap;
-        line-height: 1;
       }
     }
 
     .description {
+      @apply line-clamp-3 w-full text-pretty;
       margin-top: var(--pp-mt-desc);
-      width: 100%;
       color: color-mix(
         in srgb,
         var(--pp-white) var(--pp-opacity-primary),
@@ -136,15 +98,9 @@
       text-shadow:
         0 1px 4px color-mix(in srgb, var(--pp-black) 80%, transparent),
         0 3px 16px color-mix(in srgb, var(--pp-black) 60%, transparent);
-      text-wrap: pretty;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
 
       @media (max-width: 768px) {
-        margin-top: 1.5rem;
-        font-size: 1rem;
+        @apply mt-6 text-base;
       }
     }
 
@@ -156,8 +112,7 @@
       margin-top: var(--pp-mt-cta);
 
       @media (max-width: 768px) {
-        margin-top: 0.875rem;
-        width: 100%;
+        @apply mt-3.5 w-full;
       }
     }
   }

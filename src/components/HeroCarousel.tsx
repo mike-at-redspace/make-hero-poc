@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { useRef, useCallback } from "react";
 import { useActiveItem } from "../hooks/useActiveItem";
 import { useDragCarousel } from "../hooks/useDragCarousel";
@@ -7,36 +8,26 @@ import { HeroStage } from "./HeroStage";
 import { CarouselTrack } from "./CarouselTrack";
 import { CarouselTile } from "./CarouselTile";
 
-// React's HTMLLinkElement type doesn't include the lowercase fetchpriority attribute yet.
-declare module "react" {
-  interface LinkHTMLAttributes<T> {
-    fetchpriority?: "high" | "low" | "auto";
-  }
-}
-
 interface Props {
-  items: CarouselItem[];
+  readonly items: CarouselItem[];
 }
 
-export const HeroCarousel = ({ items }: Props) => {
+/**
+ * Featured carousel: stage + tile strip, keyboard/TV nav, drag, and adjacent poster preloads.
+ */
+export function HeroCarousel({ items }: Props): ReactElement | null {
   const { activeIndex, direction, setIndex } = useActiveItem(0);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const activeItem = items[activeIndex];
 
-  // Open the active item's watch URL (Enter / D-pad OK)
   const handleEnter = useCallback(() => {
     const url = items[activeIndex]?.button?.url;
     if (url) window.open(url, "_blank", "noopener,noreferrer");
   }, [items, activeIndex]);
 
-  // Space → move keyboard focus to the active carousel tile button
   const handleSpace = useCallback(() => {
-    (
-      document.getElementById(
-        `carousel-tile-${activeIndex}`,
-      ) as HTMLElement | null
-    )?.focus();
+    document.getElementById(`carousel-tile-${activeIndex}`)?.focus();
   }, [activeIndex]);
 
   useTVNavigation(
@@ -51,7 +42,6 @@ export const HeroCarousel = ({ items }: Props) => {
 
   if (!activeItem) return null;
 
-  // Preload adjacent poster images for smooth transitions
   const adjacent = [items[activeIndex - 1], items[activeIndex + 1]].filter(
     Boolean,
   ) as CarouselItem[];
@@ -63,19 +53,21 @@ export const HeroCarousel = ({ items }: Props) => {
         background: "var(--pp-black)",
         color: "var(--pp-white)",
         gridTemplateRows: "minmax(0, 1fr) auto",
+        maxWidth: "2560px",
+        marginLeft: "auto",
+        marginRight: "auto",
       }}
       role="region"
       aria-label="Featured Content"
       aria-roledescription="carousel"
     >
-      {/* fetchpriority (lowercase) is the correct DOM attribute on <link>; fetchPriority only works on img/script */}
       {adjacent.map((item) => (
         <link
           key={item.id}
           rel="preload"
           as="image"
           href={item.poster}
-          fetchpriority="high"
+          fetchPriority="high"
         />
       ))}
 
@@ -100,4 +92,4 @@ export const HeroCarousel = ({ items }: Props) => {
       </CarouselTrack>
     </div>
   );
-};
+}

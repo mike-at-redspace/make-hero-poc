@@ -60,8 +60,9 @@ const Slot = ({
   </motion.div>
 );
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
+/**
+ * Staggered title/meta/cast/CTA column; falls back from logo image to plain title on load error.
+ */
 export const HeroMeta = ({ item, direction }: Props) => {
   const [logoError, setLogoError] = useState(false);
   useEffect(() => setLogoError(false), [item.id]);

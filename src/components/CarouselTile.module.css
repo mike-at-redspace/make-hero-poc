@@ -1,19 +1,15 @@
+@reference "tailwindcss";
+
 @layer components {
   .tile {
     --pp-tile-active-scale: 1.08;
-    position: relative;
-    flex-shrink: 0;
+    @apply relative w-auto shrink-0 cursor-pointer border-2 border-transparent bg-(--pp-black) origin-bottom;
     height: calc((100% - 0.5rem) / var(--pp-tile-active-scale));
-    width: auto;
     min-height: 220px;
     max-height: 300px;
     aspect-ratio: 2 / 3;
     margin-top: 8%;
     border-radius: 10px;
-    border: 2px solid transparent;
-    background: var(--pp-black);
-    cursor: pointer;
-    transform-origin: bottom center;
     transition:
       transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
       border-color 0.3s ease,
@@ -22,6 +18,10 @@
 
     @media (min-width: 1920px) {
       max-height: 500px;
+    }
+
+    @media (min-width: 2560px) {
+      max-height: 520px;
     }
 
     @media (max-width: 768px) {
@@ -37,10 +37,9 @@
     }
 
     &.active {
-      z-index: 10;
+      @apply z-10;
       transform: scale(1.08);
       border-color: var(--pp-blue);
-      transform: scale(1.08);
       box-shadow:
         0 0 0 1px var(--pp-blue),
         0 0 40px color-mix(in srgb, var(--pp-blue) 45%, transparent);
@@ -58,13 +57,7 @@
   }
 
   .posterImage {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    border-radius: inherit;
+    @apply pointer-events-none absolute inset-0 h-full w-full rounded-[inherit] object-cover;
   }
 
   .srLabel {

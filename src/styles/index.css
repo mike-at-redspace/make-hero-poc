@@ -27,3 +27,7 @@
     will-change: transform;
   }
 }
+
+#root {
+  background: var(--pp-black);
+}

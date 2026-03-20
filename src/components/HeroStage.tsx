@@ -13,6 +13,7 @@ interface Props {
 
 const POSTER_TRANSITION = { duration: 0.75, ease: [0.4, 0, 0.2, 1] as const };
 
+/** Full-bleed poster, ambient glow, and metadata stack for the active slide. */
 export const HeroStage = memo(({ item, direction }: Props) => (
   <section className={styles.stage} aria-label="Hero Stage">
     <AmbientGlow item={item} />

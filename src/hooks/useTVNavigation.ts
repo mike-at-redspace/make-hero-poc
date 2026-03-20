@@ -10,18 +10,19 @@ const NAV_KEYS = new Set([
 ]);
 
 /**
- * Global keyboard / D-pad navigation for the carousel.
- * Uses a ref for activeIndex to avoid re-attaching the listener on every
- * index change — the handler closure stays stable across renders.
+ * Window-level keyboard / D-pad handling for the carousel.
+ *
+ * @remarks
+ * The keydown listener uses an intentionally empty dependency array: fresh values are read from
+ * {@link stateRef} on each event so the handler identity stays stable and is not re-bound every slide.
  */
-export const useTVNavigation = (
+export function useTVNavigation(
   itemCount: number,
   activeIndex: number,
   setIndex: (index: number) => void,
   onEnter?: () => void,
   onSpace?: () => void,
-) => {
-  // Stable ref so the event listener never needs to be replaced for index changes
+): void {
   const stateRef = useRef({
     activeIndex,
     itemCount,
@@ -36,12 +37,12 @@ export const useTVNavigation = (
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't hijack keystrokes inside form controls
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
-      )
+      ) {
         return;
+      }
       if (!NAV_KEYS.has(e.key)) return;
 
       e.preventDefault();
@@ -78,5 +79,5 @@ export const useTVNavigation = (
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []); // intentionally empty — state is accessed via ref
-};
+  }, []);
+}

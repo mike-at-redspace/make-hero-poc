@@ -1,27 +1,19 @@
+@reference "tailwindcss";
+
 @layer components {
   .root {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
+    @apply pointer-events-none absolute inset-0 z-0 overflow-hidden mix-blend-screen;
     opacity: var(--pp-glow-opacity, 0.4);
-    mix-blend-mode: screen;
   }
 
   .image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    @apply absolute inset-0 h-full w-full object-cover;
     filter: blur(100px) saturate(160%);
     transform: scale(1.1);
   }
 
   .overlay {
-    position: absolute;
-    inset: 0;
+    @apply absolute inset-0;
     background: radial-gradient(
       circle at center,
       transparent 0%,

@@ -11,6 +11,7 @@ interface Props {
   onClick: () => void;
 }
 
+/** `listbox` option: thumb + focus/scroll sync; only the active tile stays tabbable. */
 export const CarouselTile = memo(
   ({ item, index, isActive, onClick }: Props) => {
     const ref = useRef<HTMLButtonElement>(null);

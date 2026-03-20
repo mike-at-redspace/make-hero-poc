@@ -5,13 +5,15 @@ interface Props {
   castNames: string;
 }
 
-const parseCast = (raw: string) =>
-  raw
+function parseCast(raw: string): string[] {
+  return raw
     .replace(/<\/?span>/g, "")
     .split(",")
     .map((n) => n.trim())
     .filter(Boolean);
+}
 
+/** Parses API cast markup (`<span>Name</span>, …`) into readable pill labels. */
 export const CastPills = ({ castNames }: Props) => {
   const cast = useMemo(() => parseCast(castNames), [castNames]);
 

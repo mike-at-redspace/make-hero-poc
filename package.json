@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src vite.config.ts --tsconfig tsconfig.json --react-plugin --import-plugin",
+    "format": "oxfmt src vite.config.ts",
+    "format:check": "oxfmt --check src vite.config.ts"
   },
   "dependencies": {
     "@use-gesture/react": "latest",
@@ -19,7 +23,10 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "latest",
+    "oxfmt": "0.9.0",
+    "oxlint": "1.6.0",
     "tailwindcss": "latest",
+    "typescript": "5.7.3",
     "vite": "latest"
   },
   "pnpm": {

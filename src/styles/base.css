@@ -16,8 +16,9 @@
     font-family: "Proxima Nova A", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Prevent all scrollbars on the main doc — carousel is self-contained */
-    overflow: hidden;
+    /* Allow vertical scroll when content exceeds viewport */
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   /* Remove default focus outline; we supply our own branded ring everywhere */
