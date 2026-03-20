@@ -2,7 +2,6 @@
   .tile {
     position: relative;
     flex-shrink: 0;
-    overflow: hidden;
     height: 100%;
     aspect-ratio: 2 / 3;
     border-radius: 10px;
@@ -18,7 +17,7 @@
 
     &:focus-visible {
       outline: 3px solid var(--pp-focus-ring);
-      outline-offset: 3px;
+      outline-offset: -3px;
       box-shadow: var(--pp-focus-shadow);
     }
 
@@ -38,6 +37,10 @@
           0 0 40px color-mix(in srgb, var(--pp-blue) 45%, transparent);
       }
     }
+  }
+
+  .posterImage {
+    border-radius: inherit;
   }
 
   .srLabel {

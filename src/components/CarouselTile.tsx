@@ -43,7 +43,7 @@ export const CarouselTile = memo(
           alt=""
           aria-hidden="true"
           loading={isActive ? "eager" : "lazy"}
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          className={`absolute inset-0 w-full h-full object-cover pointer-events-none ${styles.posterImage}`}
         />
         {/* Overlay label for low-vision / screen readers */}
         <span className={styles.srLabel}>{item.showTitle}</span>

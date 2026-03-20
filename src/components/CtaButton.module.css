@@ -35,7 +35,7 @@
 
     &:focus-visible {
       outline: 3px solid var(--pp-focus-ring);
-      outline-offset: 4px;
+      outline-offset: -4px;
       box-shadow: var(--pp-focus-shadow);
 
       &::before {

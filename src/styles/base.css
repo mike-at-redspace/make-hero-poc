@@ -28,6 +28,6 @@
   /* Restore visible focus only for keyboard navigation */
   :focus-visible {
     outline: 3px solid var(--pp-focus-ring);
-    outline-offset: 3px;
+    outline-offset: -3px;
   }
 }
