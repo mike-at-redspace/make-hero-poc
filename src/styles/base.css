@@ -15,6 +15,24 @@
     font-family: "Proxima Nova A", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pp-scrollbar-thumb) var(--pp-black);
+  }
+
+  body::-webkit-scrollbar {
+    @apply size-1.5;
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-(--pp-black);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-[var(--pp-scrollbar-thumb)];
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    @apply bg-[var(--pp-scrollbar-thumb-hover)];
   }
 
   /* Remove default focus outline; we supply our own branded ring everywhere */

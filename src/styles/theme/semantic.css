@@ -13,4 +13,8 @@
 
   /* Focus mapping */
   --pp-focus-ring: var(--pp-blue);
+
+  /* Scrollbar (Firefox scrollbar-color + WebKit) */
+  --pp-scrollbar-thumb: color-mix(in srgb, var(--pp-white) 24%, var(--pp-black));
+  --pp-scrollbar-thumb-hover: color-mix(in srgb, var(--pp-white) 36%, var(--pp-black));
 }
