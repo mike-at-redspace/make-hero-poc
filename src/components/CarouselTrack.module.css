@@ -1,0 +1,27 @@
+@layer components {
+  .trackWrapper {
+    flex: 0 0 auto;
+    height: calc(var(--pp-strip-height) + 4rem);
+    margin-bottom: 1.5rem;
+    width: 100%;
+    position: relative;
+    z-index: 20;
+  }
+
+  .track {
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(0.4rem, 0.6vw, 0.75rem);
+    height: 100%;
+    padding: 2rem var(--pp-pad-stage-x);
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    touch-action: pan-y;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

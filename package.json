@@ -1,0 +1,30 @@
+{
+  "name": "@mike-at-redpace/make-hero-poc",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@use-gesture/react": "latest",
+    "motion": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tw-animate-css": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "latest",
+    "tailwindcss": "latest",
+    "vite": "latest"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "latest"
+    }
+  }
+}

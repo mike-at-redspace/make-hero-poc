@@ -1,0 +1,29 @@
+/* ── 1. Google Fonts ──────────────────────────────────────────────────────── */
+@import "./fonts.css";
+
+/* ── 2. Tailwind CSS v4 ──────────────────────────────────────────────────── */
+@import "tailwindcss" source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+@import "tw-animate-css";
+
+/* ── 3. Default app theme tokens ─────────────────────────────────────────── */
+@import "./theme.css";
+
+/* ── 4. @property rules + :root custom properties — must be at TOP LEVEL,
+        never inside @layer (Tailwind v4 + CSS spec requirement) ─────────── */
+@import "./tokens.css";
+
+/* ── 5. Declare layer order — AFTER tokens so layer names are registered ─── */
+@layer tokens, base, typography, components, animations, utilities;
+
+/* ── 6. Layered design system files ─────────────────────────────────────── */
+@import "./base.css" layer(base);
+@import "./typography.css" layer(typography);
+@import "./animations.css" layer(animations);
+
+/* ── 7. Utilities ────────────────────────────────────────────────────────── */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+}

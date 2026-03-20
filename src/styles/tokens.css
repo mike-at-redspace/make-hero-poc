@@ -1,0 +1,25 @@
+/* ─── Tiered Token Architecture ──────────────────────────────────────── */
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./theme/semantic.css";
+@import "./theme/fluid-math.css";
+
+/* ─── Animatable custom properties ──────────────────────────────────────── */
+@property --pp-glow-opacity {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --pp-tile-brightness {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --pp-meta-blur {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}

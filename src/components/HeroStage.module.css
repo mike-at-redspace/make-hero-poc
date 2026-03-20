@@ -1,0 +1,40 @@
+@layer components {
+  .stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    background: var(--pp-black);
+
+    .vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          to right,
+          var(--pp-black) 0%,
+          color-mix(in srgb, var(--pp-black) 72%, transparent) 30%,
+          color-mix(in srgb, var(--pp-black) 20%, transparent) 52%,
+          transparent 68%
+        ),
+        linear-gradient(
+          to left,
+          color-mix(in srgb, var(--pp-black) 55%, transparent) 0%,
+          transparent 38%
+        ),
+        linear-gradient(
+          to bottom,
+          color-mix(in srgb, var(--pp-black) 40%, transparent) 0%,
+          transparent 16%
+        ),
+        linear-gradient(
+          to top,
+          var(--pp-black) 0%,
+          color-mix(in srgb, var(--pp-black) 88%, transparent) 18%,
+          color-mix(in srgb, var(--pp-black) 45%, transparent) 40%,
+          transparent 62%
+        );
+    }
+  }
+}

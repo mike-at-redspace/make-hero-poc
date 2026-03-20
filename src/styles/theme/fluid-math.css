@@ -1,0 +1,108 @@
+/* ── TIER 3: FLUID MATH & COMPOSITES (Developer Only: clamp, color-mix, shadows) ── */
+:root {
+  /* Foreground opacities */
+  --pp-fg-secondary: color-mix(in srgb, var(--pp-fg) 90%, transparent);
+  --pp-fg-disabled: color-mix(in srgb, var(--pp-fg) 35%, transparent);
+
+  /* Borders */
+  --pp-border-weak: color-mix(in srgb, var(--pp-fg) 30%, transparent);
+
+  /* Interactive Elements */
+  --pp-focus-shadow:
+    0 0 0 3px color-mix(in srgb, var(--pp-focus-ring) 55%, transparent),
+    0 0 24px color-mix(in srgb, var(--pp-focus-ring) 35%, transparent);
+
+  --pp-gradient-brand: linear-gradient(
+    225deg,
+    var(--pp-blue) 0%,
+    var(--pp-blue-dark) 100%
+  );
+
+  /* Typography Clamps */
+  --pp-size-logo-w: clamp(
+    var(--pp-text-logo-w-min),
+    var(--pp-text-logo-w-fluid),
+    var(--pp-text-logo-w-max)
+  );
+  --pp-size-logo-h: clamp(
+    var(--pp-text-logo-h-min),
+    var(--pp-text-logo-h-fluid),
+    var(--pp-text-logo-h-max)
+  );
+
+  --pp-size-title: clamp(
+    var(--pp-text-title-min),
+    var(--pp-text-title-fluid),
+    var(--pp-text-title-max)
+  );
+  --pp-size-body: clamp(
+    var(--pp-text-body-min),
+    var(--pp-text-body-fluid),
+    var(--pp-text-body-max)
+  );
+  --pp-size-pill: clamp(
+    var(--pp-text-pill-min),
+    var(--pp-text-pill-fluid),
+    var(--pp-text-pill-max)
+  );
+  --pp-size-meta: clamp(
+    var(--pp-text-meta-min),
+    var(--pp-text-meta-fluid),
+    var(--pp-text-meta-max)
+  );
+  --pp-size-badge: clamp(
+    var(--pp-text-badge-min),
+    var(--pp-text-badge-fluid),
+    var(--pp-text-badge-max)
+  );
+  --pp-size-cta: clamp(
+    var(--pp-text-cta-min),
+    var(--pp-text-cta-fluid),
+    var(--pp-text-cta-max)
+  );
+
+  /* Spacing Clamps */
+  --pp-gap-meta: clamp(
+    var(--pp-space-meta-gap-min),
+    var(--pp-space-meta-gap-fluid),
+    var(--pp-space-meta-gap-max)
+  );
+
+  --pp-pad-stage-x: clamp(
+    var(--pp-space-stage-x-min),
+    var(--pp-space-stage-x-fluid),
+    var(--pp-space-stage-x-max)
+  );
+  --pp-pad-stage-b: clamp(
+    var(--pp-space-stage-b-min),
+    var(--pp-space-stage-b-fluid),
+    var(--pp-space-stage-b-max)
+  );
+
+  --pp-mt-desc: clamp(
+    var(--pp-space-desc-mt-min),
+    var(--pp-space-desc-mt-fluid),
+    var(--pp-space-desc-mt-max)
+  );
+  --pp-mt-cast: clamp(
+    var(--pp-space-cast-mt-min),
+    var(--pp-space-cast-mt-fluid),
+    var(--pp-space-cast-mt-max)
+  );
+  --pp-mt-cta: clamp(
+    var(--pp-space-cta-mt-min),
+    var(--pp-space-cta-mt-fluid),
+    var(--pp-space-cta-mt-max)
+  );
+
+  --pp-pad-cta-x: clamp(
+    var(--pp-space-cta-x-min),
+    var(--pp-space-cta-x-fluid),
+    var(--pp-space-cta-x-max)
+  );
+  --pp-pad-cta-y: clamp(
+    var(--pp-space-cta-y-min),
+    var(--pp-space-cta-y-fluid),
+    var(--pp-space-cta-y-max)
+  );
+}

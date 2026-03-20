@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer tokens, base, typography, components, animations, utilities;
+
+@import "./tokens.css" layer(tokens);
+@import "./base.css" layer(base);
+@import "./typography.css" layer(typography);
+@import "./animations.css" layer(animations);
+
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+}

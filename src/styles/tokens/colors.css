@@ -1,0 +1,18 @@
+/* ── TIER 1: GLOBAL COLOR TOKENS (No Math, Raw Hex/OKLCH) ── */
+:root {
+  /* Core Brand Palette */
+  --pp-core-black: #050505;
+  --pp-core-white: #ffffff;
+
+  --pp-blue-300: #3d8bff;
+  --pp-blue-500: #0064ff;
+  --pp-blue-700: #0037c5;
+
+  /* Neutrals */
+  --pp-gray-400: #9ca3af;
+
+  /* Opacity Base Values */
+  --pp-opacity-primary: 92%;
+  --pp-opacity-secondary: 76%;
+  --pp-opacity-tertiary: 62%;
+}

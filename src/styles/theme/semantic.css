@@ -1,0 +1,16 @@
+/* ── TIER 2: SEMANTIC ALIASES (Mapping Global Primitives to usage) ── */
+:root {
+  /* Brand */
+  --pp-black: var(--pp-core-black);
+  --pp-white: var(--pp-core-white);
+  --pp-blue: var(--pp-blue-500);
+  --pp-blue-dark: var(--pp-blue-700);
+  --pp-blue-light: var(--pp-blue-300);
+
+  /* Foreground */
+  --pp-fg: var(--pp-white);
+  --pp-fg-tertiary: var(--pp-gray-400);
+
+  /* Focus mapping */
+  --pp-focus-ring: var(--pp-blue);
+}

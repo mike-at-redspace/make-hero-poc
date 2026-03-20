@@ -1,0 +1,33 @@
+@layer base {
+  /* Respect reduced-motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    background: var(--pp-black);
+    color: var(--pp-white);
+    font-family: "Proxima Nova A", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent all scrollbars on the main doc — carousel is self-contained */
+    overflow: hidden;
+  }
+
+  /* Remove default focus outline; we supply our own branded ring everywhere */
+  :focus {
+    outline: none;
+  }
+
+  /* Restore visible focus only for keyboard navigation */
+  :focus-visible {
+    outline: 3px solid var(--pp-focus-ring);
+    outline-offset: 3px;
+  }
+}

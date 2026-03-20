@@ -1,0 +1,41 @@
+/* ── TIER 1: GLOBAL TYPOGRAPHY TOKENS (Raw values, No Math) ── */
+:root {
+  /* Logo */
+  --pp-text-logo-w-min: 180px;
+  --pp-text-logo-w-max: 580px;
+  --pp-text-logo-w-fluid: 28vw;
+
+  --pp-text-logo-h-min: 60px;
+  --pp-text-logo-h-max: 160px;
+  --pp-text-logo-h-fluid: 10vw;
+
+  /* Title */
+  --pp-text-title-min: 2rem;
+  --pp-text-title-max: 7rem;
+  --pp-text-title-fluid: 4.5vw;
+
+  /* Body */
+  --pp-text-body-min: 0.9375rem;
+  --pp-text-body-max: 1.625rem;
+  --pp-text-body-fluid: 1.15vw;
+
+  /* Pills */
+  --pp-text-pill-min: 0.8125rem;
+  --pp-text-pill-max: 1.25rem;
+  --pp-text-pill-fluid: 0.95vw;
+
+  /* Meta Tokens */
+  --pp-text-meta-min: 0.6rem;
+  --pp-text-meta-max: 0.95rem;
+  --pp-text-meta-fluid: 0.7vw;
+
+  /* Badge */
+  --pp-text-badge-min: 0.6rem;
+  --pp-text-badge-max: 0.925rem;
+  --pp-text-badge-fluid: 0.7vw;
+
+  /* CTA Button */
+  --pp-text-cta-min: 0.9375rem;
+  --pp-text-cta-max: 2rem;
+  --pp-text-cta-fluid: 1.45vw;
+}

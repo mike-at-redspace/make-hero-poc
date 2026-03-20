@@ -1,0 +1,78 @@
+@layer components {
+  .button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: calc(var(--pp-pad-cta-y) - 1px);
+    padding-bottom: var(--pp-pad-cta-y);
+    padding-left: var(--pp-pad-cta-x);
+    padding-right: var(--pp-pad-cta-x);
+    border-radius: var(--pp-radius-soft);
+    border: none;
+    cursor: pointer;
+    background: var(--pp-gradient-brand);
+    color: var(--pp-white);
+    text-decoration: none;
+    transition:
+      transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s ease,
+      outline-color 0.2s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        225deg,
+        var(--pp-blue-dark) 0%,
+        var(--pp-blue) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--pp-focus-ring);
+      outline-offset: 4px;
+      box-shadow: var(--pp-focus-shadow);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
+      width: 100%;
+      padding-top: calc(1.1rem - 1px);
+      padding-bottom: 1.1rem;
+      padding-left: var(--pp-pad-cta-x);
+      padding-right: var(--pp-pad-cta-x);
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      font-family: "Proxima Nova A", system-ui, sans-serif;
+      font-size: var(--pp-size-cta);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+  }
+}

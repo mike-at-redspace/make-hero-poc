@@ -1,0 +1,42 @@
+/* ── TIER 1: GLOBAL SPACING & RADII TOKENS (Raw bounds, No Math) ── */
+:root {
+  /* Layout constraints */
+  --pp-strip-height: 25vh;
+
+  /* Border Radii */
+  --pp-radius-soft: 4px;
+  --pp-radius-pill: 999px;
+
+  /* Padding & Margins (Mobile / Fluid / Desktop) */
+  --pp-space-meta-gap-min: 0.35rem;
+  --pp-space-meta-gap-max: 0.85rem;
+  --pp-space-meta-gap-fluid: 0.55vw;
+
+  --pp-space-stage-x-min: 1.5rem;
+  --pp-space-stage-x-max: 8rem;
+  --pp-space-stage-x-fluid: 5vw;
+
+  --pp-space-stage-b-min: 2rem;
+  --pp-space-stage-b-max: 6rem;
+  --pp-space-stage-b-fluid: 5vh;
+
+  --pp-space-desc-mt-min: 0.5rem;
+  --pp-space-desc-mt-max: 1.5rem;
+  --pp-space-desc-mt-fluid: 1.2vh;
+
+  --pp-space-cast-mt-min: 0.35rem;
+  --pp-space-cast-mt-max: 1rem;
+  --pp-space-cast-mt-fluid: 0.8vh;
+
+  --pp-space-cta-mt-min: 1rem;
+  --pp-space-cta-mt-max: 3rem;
+  --pp-space-cta-mt-fluid: 2.5vh;
+
+  --pp-space-cta-x-min: 1.5rem;
+  --pp-space-cta-x-max: 4rem;
+  --pp-space-cta-x-fluid: 2.8vw;
+
+  --pp-space-cta-y-min: 1rem;
+  --pp-space-cta-y-max: 2rem;
+  --pp-space-cta-y-fluid: 1.5vh;
+}
