@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import type { CarouselItem } from "../types/carousel.types";
 import { AmbientGlow } from "./AmbientGlow";
 import { HeroMeta } from "./HeroMeta";
+import { buildUrl, buildSrcset } from "./ResponsiveImage";
 import styles from "./HeroStage.module.css";
 
 interface Props {
@@ -20,9 +21,13 @@ export const HeroStage = memo(({ item, direction }: Props) => (
       <AnimatePresence mode="popLayout">
         <motion.img
           key={item.id}
-          src={item.poster}
+          src={buildUrl({ src: item.poster, width: 1280, height: 720 })}
+          srcSet={buildSrcset({ src: item.poster, width: 1280, height: 720 })}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
+          width={1280}
+          height={720}
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}

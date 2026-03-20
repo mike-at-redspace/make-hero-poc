@@ -2,6 +2,7 @@ import { memo, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import styles from "./CarouselTile.module.css";
 import type { CarouselItem } from "../types/carousel.types";
+import { ResponsiveImage } from "./ResponsiveImage";
 
 interface Props {
   item: CarouselItem;
@@ -38,10 +39,13 @@ export const CarouselTile = memo(
         whileHover={!isActive ? { scale: 1.03 } : {}}
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
       >
-        <img
+        <ResponsiveImage
           src={item.thumb}
           alt=""
-          aria-hidden="true"
+          width={600}
+          height={900}
+          crop
+          sizes="(max-width: 768px) 33vw, 15vw"
           loading={isActive ? "eager" : "lazy"}
           className={`absolute inset-0 w-full h-full object-cover pointer-events-none ${styles.posterImage}`}
         />
