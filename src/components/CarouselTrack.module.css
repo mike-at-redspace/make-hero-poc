@@ -2,27 +2,22 @@
 
 @layer components {
   .trackWrapper {
-    @apply relative z-20 mt-0 w-full flex-none overflow-hidden;
-    height: min(clamp(200px, 28vh, 320px), calc(100dvh - 280px));
+    @apply relative z-10 flex w-full shrink-0 grow-0 basis-auto flex-col overflow-hidden min-h-[clamp(220px,28vh,300px)] max-h-[clamp(280px,50vh,520px)];
 
     @media (max-width: 768px) {
-      height: min(clamp(200px, 32vh, 300px), calc(100dvh - 420px));
+      @apply min-h-[clamp(200px,24vh,280px)] max-h-[clamp(260px,48vh,440px)];
     }
   }
 
   .track {
-    @apply box-border flex h-full w-full touch-pan-y items-start overflow-hidden [scrollbar-width:none] [-ms-overflow-style:none];
-    gap: clamp(0.65rem, 1vw, 1.1rem);
-    padding: clamp(0.75rem, 1.5vh, 1.5rem) var(--pp-pad-stage-x)
-      clamp(0.75rem, 1.5vh, 1.5rem);
+    @apply box-border flex min-h-0 w-full flex-1 touch-pan-y items-end overflow-hidden gap-[clamp(0.65rem,1vw,1.1rem)] px-(--pp-pad-stage-x) pb-[clamp(0.75rem,1.5vh,1.5rem)] pt-[calc(clamp(0.75rem,1.5vh,1.5rem)+clamp(1rem,2.5vw,2.75rem))] [scrollbar-width:none] [-ms-overflow-style:none];
 
     &::-webkit-scrollbar {
       @apply hidden;
     }
 
     @media (max-width: 768px) {
-      @apply gap-3;
-      padding: clamp(0.75rem, 1.5vh, 1rem) var(--pp-pad-stage-x) 1rem;
+      @apply gap-3 pb-4 pt-[calc(clamp(0.75rem,1.5vh,1rem)+clamp(0.75rem,2vh,1.5rem))];
     }
   }
 }

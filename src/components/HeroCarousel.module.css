@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+
+@layer components {
+  .shell {
+    @apply relative isolate mx-auto flex min-h-dvh w-full max-w-[2560px] flex-col overflow-x-hidden overflow-y-visible bg-(--pp-black) pb-3 text-(--pp-white);
+  }
+
+  .preloads {
+    @apply sr-only;
+  }
+
+  .main {
+    @apply flex min-h-0 w-full flex-1 flex-col gap-[clamp(0.5rem,1.25dvh,1.25rem)];
+  }
+
+  .heroBand {
+    @apply flex min-h-0 w-full shrink-0 grow-0 basis-auto flex-col;
+  }
+}

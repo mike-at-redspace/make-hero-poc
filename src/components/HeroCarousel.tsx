@@ -7,13 +7,15 @@ import type { CarouselItem } from "../types/carousel.types";
 import { HeroStage } from "./HeroStage";
 import { CarouselTrack } from "./CarouselTrack";
 import { CarouselTile } from "./CarouselTile";
+import styles from "./HeroCarousel.module.css";
 
 interface Props {
-  readonly items: CarouselItem[];
+  readonly items: readonly CarouselItem[];
 }
 
 /**
  * Featured carousel: stage + tile strip, keyboard/TV nav, drag, and adjacent poster preloads.
+ * Width-first stage aspect + flex shell (min-height 100dvh); track is bottom-pinned via margin-top: auto.
  */
 export function HeroCarousel({ items }: Props): ReactElement | null {
   const { activeIndex, direction, setIndex } = useActiveItem(0);
@@ -48,48 +50,44 @@ export function HeroCarousel({ items }: Props): ReactElement | null {
 
   return (
     <div
-      className="w-full h-dvh min-h-150 grid overflow-x-hidden overflow-y-visible pb-3"
-      style={{
-        background: "var(--pp-black)",
-        color: "var(--pp-white)",
-        gridTemplateRows: "minmax(0, 1fr) auto",
-        maxWidth: "2560px",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
+      className={styles.shell}
       role="region"
       aria-label="Featured Content"
       aria-roledescription="carousel"
     >
-      {adjacent.map((item) => (
-        <link
-          key={item.id}
-          rel="preload"
-          as="image"
-          href={item.poster}
-          fetchPriority="high"
-        />
-      ))}
-
-      <HeroStage item={activeItem} direction={direction} />
-
-      <CarouselTrack
-        ref={trackRef}
-        x={x}
-        bindDrag={bind}
-        activeIndex={activeIndex}
-        itemCount={items.length}
-      >
-        {items.map((item, i) => (
-          <CarouselTile
+      <div className={styles.preloads} aria-hidden>
+        {adjacent.map((item) => (
+          <link
             key={item.id}
-            item={item}
-            index={i}
-            isActive={i === activeIndex}
-            onClick={() => setIndex(i)}
+            rel="preload"
+            as="image"
+            href={item.poster}
+            fetchPriority="high"
           />
         ))}
-      </CarouselTrack>
+      </div>
+      <div className={styles.main}>
+        <div className={styles.heroBand}>
+          <HeroStage item={activeItem} direction={direction} />
+        </div>
+        <CarouselTrack
+          ref={trackRef}
+          x={x}
+          bindDrag={bind}
+          activeIndex={activeIndex}
+          itemCount={items.length}
+        >
+          {items.map((item, i) => (
+            <CarouselTile
+              key={item.id}
+              item={item}
+              index={i}
+              isActive={i === activeIndex}
+              onClick={() => setIndex(i)}
+            />
+          ))}
+        </CarouselTrack>
+      </div>
     </div>
   );
 }

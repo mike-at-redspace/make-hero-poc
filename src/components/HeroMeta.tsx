@@ -97,7 +97,7 @@ export const HeroMeta = ({ item, direction }: Props) => {
                 onError={() => setLogoError(true)}
               />
             ) : (
-              <h1 className="pp-title-fallback">{item.showTitle}</h1>
+              <h1 className={styles.titleFallback}>{item.showTitle}</h1>
             )}
           </Slot>
 

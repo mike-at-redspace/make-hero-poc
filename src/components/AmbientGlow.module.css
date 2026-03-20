@@ -7,17 +7,11 @@
   }
 
   .image {
-    @apply absolute inset-0 h-full w-full object-cover;
+    @apply absolute inset-0 h-full w-full scale-110 object-cover;
     filter: blur(100px) saturate(160%);
-    transform: scale(1.1);
   }
 
   .overlay {
-    @apply absolute inset-0;
-    background: radial-gradient(
-      circle at center,
-      transparent 0%,
-      var(--pp-black) 100%
-    );
+    @apply absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--pp-black)_100%)];
   }
 }

@@ -11,14 +11,10 @@
   }
 
   body {
-    background: var(--pp-black);
-    color: var(--pp-white);
+    @apply overflow-y-auto overflow-x-hidden antialiased bg-(--pp-black) text-(--pp-white);
     font-family: "Proxima Nova A", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Allow vertical scroll when content exceeds viewport */
-    overflow-y: auto;
-    overflow-x: hidden;
   }
 
   /* Remove default focus outline; we supply our own branded ring everywhere */
@@ -28,7 +24,6 @@
 
   /* Restore visible focus only for keyboard navigation */
   :focus-visible {
-    outline: 3px solid var(--pp-focus-ring);
-    outline-offset: -3px;
+    @apply outline-solid outline-[3px] outline-(--pp-focus-ring) -outline-offset-[3px];
   }
 }

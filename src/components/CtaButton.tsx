@@ -3,6 +3,7 @@ import type {
   ButtonHTMLAttributes,
   ReactNode,
 } from "react";
+import { classNames } from "../lib/classNames";
 import styles from "./CtaButton.module.css";
 
 interface BaseProps {
@@ -28,7 +29,7 @@ const Inner = ({ label }: { label: ReactNode }) => (
  */
 export function CtaButton(props: Props) {
   const label = props.children ?? "Watch Now";
-  const cls = `${styles.button}${props.className ? ` ${props.className}` : ""}`;
+  const cls = classNames(styles.button, props.className);
 
   if ("href" in props && typeof props.href === "string") {
     const {

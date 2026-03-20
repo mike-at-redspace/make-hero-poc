@@ -2,33 +2,20 @@
 
 @layer components {
   .button {
-    @apply relative inline-flex cursor-pointer items-center justify-center overflow-hidden border-none text-(--pp-white) no-underline;
-    padding-top: calc(var(--pp-pad-cta-y) - 1px);
-    padding-bottom: var(--pp-pad-cta-y);
-    padding-left: var(--pp-pad-cta-x);
-    padding-right: var(--pp-pad-cta-x);
-    border-radius: var(--pp-radius-soft);
+    @apply relative inline-flex cursor-pointer items-center justify-center overflow-hidden border-none text-(--pp-white) no-underline transition-[transform,box-shadow,outline-color] duration-200 ease-in-out rounded-(--pp-radius-soft) pt-[calc(var(--pp-pad-cta-y)-1px)] pb-(--pp-pad-cta-y) ps-(--pp-pad-cta-x) pe-(--pp-pad-cta-x) active:scale-[0.97] max-[768px]:flex max-[768px]:w-full max-[768px]:pt-[calc(1.1rem-1px)] max-[768px]:pb-[1.1rem];
     background: var(--pp-gradient-brand);
-    transition:
-      transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.3s ease,
-      outline-color 0.2s ease;
 
     &::before {
-      @apply absolute inset-0 opacity-0;
-      content: "";
+      @apply pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out content-[''];
       background: linear-gradient(
         225deg,
         var(--pp-blue-dark) 0%,
         var(--pp-blue) 100%
       );
-      transition: opacity 0.3s ease;
     }
 
     &:focus-visible {
-      outline: 3px solid var(--pp-focus-ring);
-      outline-offset: -4px;
-      box-shadow: var(--pp-focus-shadow);
+      @apply outline-solid outline-[3px] outline-(--pp-focus-ring) -outline-offset-4 shadow-(--pp-focus-shadow);
 
       &::before {
         @apply opacity-100;
@@ -38,24 +25,10 @@
     &:hover::before {
       @apply opacity-100;
     }
+  }
 
-    &:active {
-      @apply scale-[0.97];
-    }
-
-    @media (max-width: 768px) {
-      @apply flex w-full;
-      padding-top: calc(1.1rem - 1px);
-      padding-bottom: 1.1rem;
-      padding-left: var(--pp-pad-cta-x);
-      padding-right: var(--pp-pad-cta-x);
-    }
-
-    .inner {
-      @apply relative z-1 flex items-center whitespace-nowrap uppercase leading-none tracking-widest pointer-events-none;
-      font-family: "Proxima Nova A", system-ui, sans-serif;
-      font-size: var(--pp-size-cta);
-      font-weight: 600;
-    }
+  .inner {
+    @apply pointer-events-none relative z-10 flex items-center whitespace-nowrap font-semibold uppercase leading-none tracking-widest;
+    font-size: var(--pp-size-cta);
   }
 }

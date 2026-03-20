@@ -2,58 +2,27 @@
 
 @layer components {
   .tile {
-    --pp-tile-active-scale: 1.08;
-    @apply relative w-auto shrink-0 cursor-pointer border-2 border-transparent bg-(--pp-black) origin-bottom;
-    height: calc((100% - 0.5rem) / var(--pp-tile-active-scale));
-    min-height: 220px;
-    max-height: 300px;
-    aspect-ratio: 2 / 3;
-    margin-top: 8%;
-    border-radius: 10px;
-    transition:
-      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 0.3s ease,
-      box-shadow 0.3s ease,
-      outline-color 0.2s ease;
+    @apply relative mt-0 aspect-2/3 w-auto shrink-0 cursor-pointer rounded-[10px] border-2 border-transparent bg-(--pp-black) origin-bottom transition-[transform,border-color,box-shadow,outline-color] duration-450 ease-in-out h-[clamp(220px,28vh,300px)] focus-visible:scale-[1.08] focus-visible:outline-solid focus-visible:outline-[3px] focus-visible:outline-(--pp-focus-ring) focus-visible:-outline-offset-[3px] focus-visible:shadow-(--pp-focus-shadow);
 
     @media (min-width: 1920px) {
-      max-height: 500px;
+      @apply h-[clamp(220px,28vh,500px)];
     }
 
     @media (min-width: 2560px) {
-      max-height: 520px;
+      @apply h-[clamp(220px,28vh,520px)];
     }
 
     @media (max-width: 768px) {
-      min-height: 200px;
-      max-height: 280px;
+      @apply h-[clamp(200px,24vh,280px)];
     }
+  }
 
-    &:focus-visible {
-      outline: 3px solid var(--pp-focus-ring);
-      outline-offset: -3px;
-      box-shadow: var(--pp-focus-shadow);
-      transform: scale(1.08);
-    }
+  .tileActive {
+    @apply z-10 scale-[1.08] border-(--pp-blue) shadow-[0_0_0_1px_var(--pp-blue),0_0_40px_color-mix(in_srgb,var(--pp-blue)_45%,transparent)];
+  }
 
-    &.active {
-      @apply z-10;
-      transform: scale(1.08);
-      border-color: var(--pp-blue);
-      box-shadow:
-        0 0 0 1px var(--pp-blue),
-        0 0 40px color-mix(in srgb, var(--pp-blue) 45%, transparent);
-
-      /* Active + Focused Combined */
-      &:focus-visible {
-        outline-color: var(--pp-blue-light);
-        transform: scale(1.08);
-        box-shadow:
-          0 0 3px var(--pp-focus-ring),
-          0 0 0 1px var(--pp-blue),
-          0 0 40px color-mix(in srgb, var(--pp-blue) 45%, transparent);
-      }
-    }
+  .tile.tileActive:focus-visible {
+    @apply outline-solid outline-[3px] outline-(--pp-blue-light) shadow-[0_0_3px_var(--pp-focus-ring),0_0_0_1px_var(--pp-blue),0_0_40px_color-mix(in_srgb,var(--pp-blue)_45%,transparent)];
   }
 
   .posterImage {
@@ -61,16 +30,6 @@
   }
 
   .srLabel {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    white-space: nowrap;
-    border: 0;
-    /* Modern clip implementation */
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%);
+    @apply sr-only;
   }
 }

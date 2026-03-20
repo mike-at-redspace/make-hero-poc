@@ -14,12 +14,10 @@
 @import "./tokens.css";
 
 /* ── 5. Declare layer order — AFTER tokens so layer names are registered ─── */
-@layer tokens, base, typography, components, animations, utilities;
+@layer tokens, base, components, utilities;
 
 /* ── 6. Layered design system files ─────────────────────────────────────── */
 @import "./base.css" layer(base);
-@import "./typography.css" layer(typography);
-@import "./animations.css" layer(animations);
 
 /* ── 7. Utilities ────────────────────────────────────────────────────────── */
 @layer utilities {
@@ -28,6 +26,8 @@
   }
 }
 
-#root {
-  background: var(--pp-black);
+@layer base {
+  #root {
+    @apply bg-(--pp-black);
+  }
 }

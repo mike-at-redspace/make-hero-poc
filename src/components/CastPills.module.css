@@ -2,24 +2,20 @@
 
 @layer components {
   .list {
-    @apply m-0 flex list-none flex-wrap p-0;
-    gap: clamp(0.3rem, 0.45vw, 0.55rem);
+    @apply m-0 flex list-none flex-wrap gap-[clamp(0.3rem,0.45vw,0.55rem)] p-0;
   }
 
   .pill {
-    @apply whitespace-nowrap font-normal tracking-[0.01em];
+    @apply whitespace-nowrap rounded-(--pp-radius-pill) border border-solid py-[0.22em] px-[0.65em] font-normal tracking-[0.01em] backdrop-blur-sm;
     font-family: "Proxima Nova A", system-ui, sans-serif;
     font-size: var(--pp-size-pill);
-    padding: 0.22em 0.65em;
-    border-radius: var(--pp-radius-pill);
     background: color-mix(in srgb, var(--pp-white) 10%, transparent);
+    border-color: color-mix(in srgb, var(--pp-white) 12%, transparent);
     color: color-mix(
       in srgb,
       var(--pp-white) var(--pp-opacity-secondary),
       transparent
     );
-    backdrop-filter: blur(8px);
-    border: 1px solid color-mix(in srgb, var(--pp-white) 12%, transparent);
     text-shadow: 0 1px 4px color-mix(in srgb, var(--pp-black) 70%, transparent);
   }
 }

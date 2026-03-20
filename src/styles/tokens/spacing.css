@@ -2,7 +2,6 @@
 :root {
   /* Layout constraints */
   --pp-strip-height: 25vh;
-
   /* Border Radii */
   --pp-radius-soft: 4px;
   --pp-radius-pill: 999px;

@@ -18,7 +18,7 @@ export const HeroStage = memo(({ item, direction }: Props) => (
   <section className={styles.stage} aria-label="Hero Stage">
     <AmbientGlow item={item} />
 
-    <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+    <div className={styles.posterLayer}>
       <AnimatePresence mode="popLayout">
         <motion.img
           key={item.id}
@@ -33,11 +33,11 @@ export const HeroStage = memo(({ item, direction }: Props) => (
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={POSTER_TRANSITION}
-          className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
+          className="absolute inset-0 size-full object-cover object-right md:object-center"
         />
       </AnimatePresence>
 
-      <div className={styles.vignette} />
+      <div className={styles.vignette} aria-hidden />
     </div>
 
     <HeroMeta item={item} direction={direction} />

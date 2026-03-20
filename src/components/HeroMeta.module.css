@@ -2,8 +2,7 @@
 
 @layer components {
   .container {
-    @apply pointer-events-none absolute bottom-0 left-0 z-10 w-full;
-    padding: 0 var(--pp-pad-stage-x) 0;
+    @apply pointer-events-none absolute bottom-0 left-0 z-30 w-full px-(--pp-pad-stage-x) pt-0 pb-0;
     background: linear-gradient(
       to top,
       var(--pp-black) 0%,
@@ -11,109 +10,98 @@
       transparent 100%
     );
 
-    .inner {
-      @apply flex max-w-[800px] flex-col items-start pointer-events-auto;
-      width: 65%;
-
-      @media (max-width: 768px) {
-        @apply w-auto max-w-[calc(100vw_-_2_*_var(--pp-pad-stage-x))] items-stretch;
-      }
+    @media (max-width: 768px) {
+      @apply pb-[clamp(0.25rem,0.8vh,0.5rem)];
     }
+  }
+
+  .inner {
+    @apply pointer-events-auto flex w-[65%] max-w-[800px] flex-col items-start;
 
     @media (max-width: 768px) {
-      padding-bottom: clamp(0.25rem, 0.8vh, 0.5rem);
+      @apply w-auto max-w-[calc(100vw-2*var(--pp-pad-stage-x))] items-stretch;
     }
+  }
 
-    .logo {
-      @apply mb-[clamp(0.5rem,1.2vh,1.25rem)] block h-auto w-full max-w-full object-contain object-left;
-      max-height: clamp(120px, 30vh, 360px);
-      filter: drop-shadow(
-          0 2px 8px color-mix(in srgb, var(--pp-black) 85%, transparent)
-        )
-        drop-shadow(
-          0 6px 28px color-mix(in srgb, var(--pp-black) 65%, transparent)
-        );
-
-      @media (max-width: 768px) {
-        max-height: clamp(110px, 18vh, 180px);
-      }
-    }
-
-    .metaBar {
-      @apply flex flex-wrap items-center;
-      gap: var(--pp-gap-meta);
-
-      .metaToken {
-        @apply whitespace-nowrap uppercase leading-none font-medium tracking-widest;
-        font-family: "Proxima Nova A", system-ui, sans-serif;
-        font-size: var(--pp-size-meta);
-        color: color-mix(
-          in srgb,
-          var(--pp-white) var(--pp-opacity-tertiary),
-          transparent
-        );
-        text-shadow: 0 1px 6px
-          color-mix(in srgb, var(--pp-black) 90%, transparent);
-      }
-
-      .metaDot {
-        @apply shrink-0 select-none leading-none text-[0.5em];
-        color: color-mix(in srgb, var(--pp-white) 35%, transparent);
-      }
-
-      .brandBadge {
-        @apply whitespace-nowrap rounded-(--pp-radius-pill) py-[0.2em] px-[0.65em] font-bold uppercase leading-[1.6] tracking-[0.08em] text-(--pp-fg);
-        background: var(--pp-gradient-brand);
-        font-family: "Proxima Nova A", system-ui, sans-serif;
-        font-size: var(--pp-size-badge);
-        text-shadow: 0 1px 4px
-          color-mix(in srgb, var(--pp-black) 60%, transparent);
-      }
-
-      .ratingBadge {
-        @apply whitespace-nowrap rounded-(--pp-radius-soft) border-[1.5px] border-solid py-[0.12em] px-[0.45em] font-semibold uppercase leading-none tracking-[0.06em];
-        border-color: color-mix(in srgb, var(--pp-white) 28%, transparent);
-        font-family: "Proxima Nova A", system-ui, sans-serif;
-        font-size: var(--pp-size-badge);
-        color: color-mix(
-          in srgb,
-          var(--pp-white) var(--pp-opacity-tertiary),
-          transparent
-        );
-      }
-    }
-
-    .description {
-      @apply line-clamp-3 w-full text-pretty;
-      margin-top: var(--pp-mt-desc);
-      color: color-mix(
-        in srgb,
-        var(--pp-white) var(--pp-opacity-primary),
-        transparent
+  .logo {
+    @apply mb-[clamp(0.5rem,1.2vh,1.25rem)] block h-auto w-full max-w-full object-contain object-left max-h-[clamp(120px,30vh,360px)] max-[768px]:max-h-[clamp(110px,18vh,180px)] max-[540px]:max-h-[clamp(88px,14vh,140px)];
+    filter: drop-shadow(
+        0 2px 8px color-mix(in srgb, var(--pp-black) 85%, transparent)
+      )
+      drop-shadow(
+        0 6px 28px color-mix(in srgb, var(--pp-black) 65%, transparent)
       );
-      font-family: "Proxima Nova A", system-ui, sans-serif;
-      font-size: var(--pp-size-body);
-      font-weight: 400;
-      line-height: 1.65;
-      text-shadow:
-        0 1px 4px color-mix(in srgb, var(--pp-black) 80%, transparent),
-        0 3px 16px color-mix(in srgb, var(--pp-black) 60%, transparent);
+  }
 
-      @media (max-width: 768px) {
-        @apply mt-6 text-base;
-      }
-    }
+  .titleFallback {
+    @apply font-extrabold uppercase leading-[1.05] tracking-[-0.02em] text-(--pp-white);
+    font-family: "Proxima Nova A", system-ui, sans-serif;
+    font-size: var(--pp-size-title);
+    text-shadow:
+      0 2px 4px color-mix(in srgb, var(--pp-black) 80%, transparent),
+      0 4px 20px color-mix(in srgb, var(--pp-black) 60%, transparent);
+  }
 
-    .castRow {
-      margin-top: var(--pp-mt-cast);
-    }
+  .metaBar {
+    @apply flex flex-wrap items-center gap-(--pp-gap-meta);
+  }
 
-    .ctaRow {
-      margin-top: var(--pp-mt-cta);
+  .metaToken {
+    @apply whitespace-nowrap font-medium uppercase leading-none tracking-widest;
+    font-family: "Proxima Nova A", system-ui, sans-serif;
+    font-size: var(--pp-size-meta);
+    color: color-mix(
+      in srgb,
+      var(--pp-white) var(--pp-opacity-tertiary),
+      transparent
+    );
+    text-shadow: 0 1px 6px color-mix(in srgb, var(--pp-black) 90%, transparent);
+  }
 
-      @media (max-width: 768px) {
-        @apply mt-3.5 w-full;
-      }
-    }
+  .metaDot {
+    @apply shrink-0 select-none leading-none text-[0.5em];
+    color: color-mix(in srgb, var(--pp-white) 35%, transparent);
+  }
+
+  .brandBadge {
+    @apply whitespace-nowrap rounded-(--pp-radius-pill) py-[0.2em] px-[0.65em] font-bold uppercase leading-[1.6] tracking-[0.08em] text-(--pp-fg);
+    background: var(--pp-gradient-brand);
+    font-family: "Proxima Nova A", system-ui, sans-serif;
+    font-size: var(--pp-size-badge);
+    text-shadow: 0 1px 4px color-mix(in srgb, var(--pp-black) 60%, transparent);
+  }
+
+  .ratingBadge {
+    @apply whitespace-nowrap rounded-(--pp-radius-soft) border-[1.5px] border-solid py-[0.12em] px-[0.45em] font-semibold uppercase leading-none tracking-[0.06em];
+    border-color: color-mix(in srgb, var(--pp-white) 28%, transparent);
+    font-family: "Proxima Nova A", system-ui, sans-serif;
+    font-size: var(--pp-size-badge);
+    color: color-mix(
+      in srgb,
+      var(--pp-white) var(--pp-opacity-tertiary),
+      transparent
+    );
+  }
+
+  .description {
+    @apply mt-(--pp-mt-desc) line-clamp-3 w-full text-pretty font-normal leading-[1.65] max-[768px]:mt-6 max-[768px]:text-base;
+    font-family: "Proxima Nova A", system-ui, sans-serif;
+    font-size: var(--pp-size-body);
+    color: color-mix(
+      in srgb,
+      var(--pp-white) var(--pp-opacity-primary),
+      transparent
+    );
+    text-shadow:
+      0 1px 4px color-mix(in srgb, var(--pp-black) 80%, transparent),
+      0 3px 16px color-mix(in srgb, var(--pp-black) 60%, transparent);
+  }
+
+  .castRow {
+    @apply mt-(--pp-mt-cast);
+  }
+
+  .ctaRow {
+    @apply mt-(--pp-mt-cta) max-[768px]:mt-3.5 max-[768px]:w-full;
   }
 }

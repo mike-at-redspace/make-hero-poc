@@ -2,36 +2,43 @@
 
 @layer components {
   .stage {
-    @apply relative min-h-0 w-full flex-[1_1_auto] bg-(--pp-black);
-    height: 100%;
+    @apply relative isolate z-20 aspect-video w-full max-h-[768px] bg-(--pp-black);
 
-    .vignette {
-      @apply pointer-events-none absolute inset-0;
-      background:
-        linear-gradient(
-          to right,
-          var(--pp-black) 0%,
-          color-mix(in srgb, var(--pp-black) 72%, transparent) 30%,
-          color-mix(in srgb, var(--pp-black) 20%, transparent) 52%,
-          transparent 68%
-        ),
-        linear-gradient(
-          to left,
-          color-mix(in srgb, var(--pp-black) 55%, transparent) 0%,
-          transparent 38%
-        ),
-        linear-gradient(
-          to bottom,
-          color-mix(in srgb, var(--pp-black) 40%, transparent) 0%,
-          transparent 16%
-        ),
-        linear-gradient(
-          to top,
-          var(--pp-black) 0%,
-          color-mix(in srgb, var(--pp-black) 88%, transparent) 18%,
-          color-mix(in srgb, var(--pp-black) 45%, transparent) 40%,
-          transparent 62%
-        );
+    @media (max-width: 768px) {
+      @apply aspect-3/4 max-h-none;
     }
+  }
+
+  .posterLayer {
+    @apply pointer-events-none absolute inset-0 z-0 overflow-hidden;
+  }
+
+  .vignette {
+    @apply pointer-events-none absolute inset-0;
+    background:
+      linear-gradient(
+        to right,
+        var(--pp-black) 0%,
+        color-mix(in srgb, var(--pp-black) 72%, transparent) 30%,
+        color-mix(in srgb, var(--pp-black) 20%, transparent) 52%,
+        transparent 68%
+      ),
+      linear-gradient(
+        to left,
+        color-mix(in srgb, var(--pp-black) 55%, transparent) 0%,
+        transparent 38%
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--pp-black) 40%, transparent) 0%,
+        transparent 16%
+      ),
+      linear-gradient(
+        to top,
+        var(--pp-black) 0%,
+        color-mix(in srgb, var(--pp-black) 88%, transparent) 18%,
+        color-mix(in srgb, var(--pp-black) 45%, transparent) 40%,
+        transparent 62%
+      );
   }
 }

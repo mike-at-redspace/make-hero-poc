@@ -9,7 +9,7 @@ Always adhere to the following architectural, styling, and accessibility constra
 ## Tech Stack
 
 - **Core:** React 18 + Vite + TypeScript (Strict Mode)
-- **Styling:** Tailwind CSS v4 + CSS Modules (PostCSS)
+- **Styling:** Tailwind CSS v4 (utilities + `@apply` in layered CSS)
 - **Animation/Gestures:** Framer Motion (`motion/react`) + `@use-gesture/react`
 - **UI Primitives:** Radix UI (via shadcn/ui custom implementations)
 
@@ -26,7 +26,7 @@ Always adhere to the following architectural, styling, and accessibility constra
 
 ### 2. Styling & CSS Architecture
 
-- **Hybrid Styling Approach:** Use Tailwind v4 strictly for high-level layouts (`flex`, `grid`, `absolute inset-0`) and rapid utility spacing. Use CSS Modules (`*.module.css`) for complex, heavily layered, or pseudo-class-heavy component styles.
+- **Tailwind-first:** Prefer Tailwind utilities and arbitrary values in component `className`s (including layered gradients, `before:`, and `data-*` variants). Use `src/styles/base.css` / `index.css` `@layer` only for global resets and shared utilities (e.g. `will-change-transform`).
 - **Strict Design Tokens:** NEVER use hardcoded hex codes, raw pixel values, or arbitrary Tailwind colors. YOU MUST use the globally defined CSS variables from `src/styles/tokens.css` (e.g., `var(--pp-blue)`, `var(--pp-black)`, `var(--pp-opacity-primary)`).
 - **Fluid Typography & Spacing:** Primary typography, margins, and padding MUST use `clamp()` functions to support fluid scaling from mobile (320px) to 4K (3840px). Refer to `--pp-size-*` and `--pp-pad-*` tokens.
 
@@ -46,7 +46,7 @@ Always adhere to the following architectural, styling, and accessibility constra
 ### 5. Accessibility (a11y)
 
 - **Screen Readers:** Use `aria-hidden="true"` on all decorative elements (glows, background posters like `AmbientGlow.tsx`).
-- **Hidden Text:** Use the `.srLabel` CSS pattern (clip-path inset, see `CarouselTile.module.css`) for visually hidden screen-reader text. Do not use `display: none` or `opacity: 0`.
+- **Hidden Text:** Use Tailwind `sr-only` (or the same clip pattern) for visually hidden screen-reader text. Do not use `display: none` or `opacity: 0`.
 - **Semantic Roles:** Enforce `role="region"`, `role="listbox"`, and `role="option"` for the `HeroCarousel` and its tracks.
 
 ### 6. Performance Optimization

@@ -1,8 +1,9 @@
 import { memo, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import styles from "./CarouselTile.module.css";
 import type { CarouselItem } from "../types/carousel.types";
+import { classNames } from "../lib/classNames";
 import { ResponsiveImage } from "./ResponsiveImage";
+import styles from "./CarouselTile.module.css";
 
 interface Props {
   item: CarouselItem;
@@ -32,10 +33,8 @@ export const CarouselTile = memo(
         role="option"
         aria-selected={isActive}
         aria-label={item.showTitle}
-        /* Only the active tile is in the natural tab order.
-         Arrow keys (handled globally) move focus within the listbox. */
         tabIndex={isActive ? 0 : -1}
-        className={`${styles.tile} ${isActive ? styles.active : ""}`}
+        className={classNames(styles.tile, isActive && styles.tileActive)}
         onClick={onClick}
         whileHover={!isActive ? { scale: 1.03 } : {}}
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
@@ -50,7 +49,6 @@ export const CarouselTile = memo(
           loading={isActive ? "eager" : "lazy"}
           className={styles.posterImage}
         />
-        {/* Overlay label for low-vision / screen readers */}
         <span className={styles.srLabel}>{item.showTitle}</span>
       </motion.button>
     );
