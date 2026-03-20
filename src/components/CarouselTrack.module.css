@@ -1,7 +1,7 @@
 @layer components {
   .trackWrapper {
     flex: 0 0 auto;
-    height: calc(var(--pp-strip-height) + 4rem);
+    height: calc(clamp(140px, 16vw, 260px) * 1.5 + 4rem);
     margin-bottom: 1.5rem;
     width: 100%;
     position: relative;
