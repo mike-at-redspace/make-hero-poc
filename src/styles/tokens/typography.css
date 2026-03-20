@@ -35,7 +35,7 @@
   --pp-text-badge-fluid: 0.7vw;
 
   /* CTA Button */
-  --pp-text-cta-min: 0.9375rem;
-  --pp-text-cta-max: 2rem;
-  --pp-text-cta-fluid: 1.45vw;
+  --pp-text-cta-min: 0.8rem;
+  --pp-text-cta-max: 1.25rem;
+  --pp-text-cta-fluid: 1.1vw;
 }
